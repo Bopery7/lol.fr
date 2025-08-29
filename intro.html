@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bopery7 | Links</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #000000, #222222, #111111);
+            background-attachment: fixed;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 1.5rem;
+        }
+        
+        .container {
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .avatar {
+            width: 110px;
+            height: 110px;
+            margin: 0 auto 1rem;
+            border-radius: 50%;
+            background-image: url('https://i.pinimg.com/736x/6a/19/d7/6a19d7003abe766ba9bd5cf6a4da826b.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            border: 2px solid white;
+        }
+        
+        .avatar:hover {
+            transform: scale(1.05);
+        }
+        
+        .avatar::after {
+            content: '';
+            position: absolute;
+            width: 150%;
+            height: 150%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transform: rotate(45deg);
+            animation: shine 3s infinite;
+        }
+        
+        @keyframes shine {
+            0% { left: -100%; }
+            20% { left: 100%; }
+            100% { left: 100%; }
+        }
+        
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: #ffffff;
+            font-weight: 700;
+        }
+        
+        .tagline {
+            display: none; /* Removed the description */
+        }
+        
+        .music-player {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 1.2rem;
+            margin: 1.5rem 0;
+            text-align: left;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .music-player:hover {
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+        }
+        
+        .song-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .song-info i {
+            font-size: 1.3rem;
+            margin-right: 0.8rem;
+            color: #ffffff;
+        }
+        
+        .song-details {
+            flex: 1;
+        }
+        
+        .song-title {
+            font-weight: 600;
+            font-size: 1rem;
+            color: #ffffff;
+        }
+        
+        .song-artist {
+            font-size: 0.85rem;
+            opacity: 0.8;
+            color: #cccccc;
+        }
+        
+        .progress-container {
+            width: 100%;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 3px;
+            overflow: hidden;
+            margin: 0.8rem 0;
+            cursor: pointer;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background: #ffffff;
+            border-radius: 3px;
+            transition: width 0.1s linear;
+        }
+        
+        .time-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            opacity: 0.7;
+            margin-bottom: 0.8rem;
+            color: #cccccc;
+        }
+        
+        .player-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1rem;
+        }
+        
+        .control-btn {
+            background: transparent;
+            border: none;
+            color: #fff;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            padding: 0.5rem;
+            border-radius: 50%;
+            width: 38px;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .control-btn:hover {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .play-btn {
+            background: #ffffff;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
+            transition: all 0.2s ease;
+            color: #000000;
+        }
+        
+        .play-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+        }
+        
+        .volume-container {
+            display: flex;
+            align-items: center;
+            margin-top: 0.8rem;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.4rem 0.8rem;
+            border-radius: 15px;
+        }
+        
+        .volume-slider {
+            width: 80px;
+            margin: 0 8px;
+            -webkit-appearance: none;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 2px;
+            outline: none;
+        }
+        
+        .volume-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ffffff;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .volume-slider::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+        }
+        
+        .status-message {
+            font-size: 0.8rem;
+            margin-top: 0.8rem;
+            color: #ffffff;
+            min-height: 18px;
+            text-align: center;
+            font-style: italic;
+        }
+        
+        .links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            margin-top: 1.8rem;
+        }
+        
+        .link {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 0.8rem;
+            padding: 1rem 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 14px;
+            text-decoration: none;
+            color: #fff;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: 0.5s;
+        }
+        
+        .link:hover::before {
+            left: 100%;
+        }
+        
+        .link:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+        
+        .link i {
+            font-size: 1.2rem;
+            width: 22px;
+            text-align: center;
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1.2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .social-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .social-icon:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px) rotate(5deg);
+            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+        
+        .footer {
+            margin-top: 2rem;
+            font-size: 0.8rem;
+            opacity: 0.6;
+            color: #cccccc;
+        }
+        
+        .floating-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.15);
+            animation: float 15s infinite linear;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .avatar {
+                width: 90px;
+                height: 90px;
+            }
+            
+            h1 {
+                font-size: 1.7rem;
+            }
+            
+            .link {
+                padding: 0.9rem 1.2rem;
+                font-size: 0.95rem;
+            }
+            
+            .social-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+            
+            .container {
+                padding: 1.5rem;
+            }
+            
+            .music-player {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-particles" id="particles"></div>
+    
+    <div class="container">
+        <div class="avatar"></div>
+        <h1>@bopery7</h1>
+        
+        <!-- Music Player -->
+        <div class="music-player">
+            <div class="song-info">
+                <i class="fas fa-music"></i>
+                <div class="song-details">
+                    <div class="song-title" id="song-title">Khaos Emerald</div>
+                    <div class="song-artist" id="song-artist">9lives</div>
+                </div>
+            </div>
+            
+            <div class="progress-container" id="progress-container">
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>
+            
+            <div class="time-info">
+                <span id="current-time">0:00</span>
+                <span id="duration">0:00</span>
+            </div>
+            
+            <div class="player-controls">
+                <button class="control-btn" id="prev-btn"><i class="fas fa-step-backward"></i></button>
+                <button class="control-btn play-btn" id="play-btn"><i class="fas fa-play" id="play-icon"></i></button>
+                <button class="control-btn" id="next-btn"><i class="fas fa-step-forward"></i></button>
+                <button class="control-btn" id="mute-btn"><i class="fas fa-volume-up" id="volume-icon"></i></button>
+            </div>
+            
+            <div class="volume-container">
+                <i class="fas fa-volume-down"></i>
+                <input type="range" class="volume-slider" id="volume-slider" min="0" max="1" step="0.01" value="0.7">
+                <i class="fas fa-volume-up"></i>
+            </div>
+            
+            <div class="status-message" id="status-message">Loading your track...</div>
+        </div>
+        
+        <div class="links">
+            <a href="https://x.com/bopery7" class="link" target="_blank"><i class="fab fa-twitter"></i> Twitter</a>
+            <a href="https://discord.com/channels/@me" class="link" target="_blank"><i class="fab fa-discord"></i> Discord</a>
+            <a href="https://scriptblox.com/u/bopery7" class="link" target="_blank"><i class="fas fa-code"></i> Scriptblox</a>
+            <a href="https://www.roblox.com/users/7904011382/profile" class="link" target="_blank"><i class="fas fa-gamepad"></i> Roblox</a>
+            <a href="https://www.youtube.com/@bopery7" class="link" target="_blank"><i class="fab fa-youtube"></i> YouTube</a>
+        </div>
+        
+        <div class="social-icons">
+            <a href="https://x.com/bopery7" class="social-icon" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="https://discord.com/channels/@me" class="social-icon" target="_blank"><i class="fab fa-discord"></i></a>
+            <a href="https://scriptblox.com/u/bopery7" class="social-icon" target="_blank"><i class="fas fa-code"></i></a>
+            <a href="https://www.roblox.com/users/7904011382/profile" class="social-icon" target="_blank"><i class="fas fa-gamepad"></i></a>
+            <a href="https://www.youtube.com/@bopery7" class="social-icon" target="_blank"><i class="fab fa-youtube"></i></a>
+        </div>
+        
+        <div class="footer">© 2025 bopery7 · All Rights Reserved</div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const audio = new Audio();
+            const playBtn = document.getElementById('play-btn');
+            const playIcon = document.getElementById('play-icon');
+            const muteBtn = document.getElementById('mute-btn');
+            const volumeIcon = document.getElementById('volume-icon');
+            const volumeSlider = document.getElementById('volume-slider');
+            const progressBar = document.getElementById('progress-bar');
+            const progressContainer = document.getElementById('progress-container');
+            const currentTimeEl = document.getElementById('current-time');
+            const durationEl = document.getElementById('duration');
+            const statusMessage = document.getElementById('status-message');
+            
+            let isPlaying = false;
+            let isSeeking = false;
+            
+            // Create floating particles
+            function createParticles() {
+                const particlesContainer = document.getElementById('particles');
+                const particleCount = 20;
+                
+                for (let i = 0; i < particleCount; i++) {
+                    const particle = document.createElement('div');
+                    particle.classList.add('particle');
+                    
+                    // Random size between 3 and 8px
+                    const size = Math.random() * 5 + 3;
+                    particle.style.width = `${size}px`;
+                    particle.style.height = `${size}px`;
+                    
+                    // Random position
+                    particle.style.left = `${Math.random() * 100}%`;
+                    particle.style.top = `${Math.random() * 100}%`;
+                    
+                    // Random animation delay
+                    particle.style.animationDelay = `${Math.random() * 15}s`;
+                    
+                    // Random opacity
+                    particle.style.opacity = Math.random() * 0.5;
+                    
+                    particlesContainer.appendChild(particle);
+                }
+            }
+            
+            // Format time for display
+            function formatTime(seconds) {
+                const mins = Math.floor(seconds / 60);
+                const secs = Math.floor(seconds % 60);
+                return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+            }
+            
+            // Update progress bar
+            function updateProgress() {
+                if (audio.duration && !isSeeking) {
+                    const progressPercent = (audio.currentTime / audio.duration) * 100;
+                    progressBar.style.width = `${progressPercent}%`;
+                    currentTimeEl.textContent = formatTime(audio.currentTime);
+                }
+            }
+            
+            // Set progress when clicking on progress bar
+            function setProgress(e) {
+                if (!audio.duration) return;
+                
+                const width = this.clientWidth;
+                const clickX = e.offsetX;
+                audio.currentTime = (clickX / width) * audio.duration;
+                updateProgress();
+            }
+            
+            // Play/Pause functionality
+            function togglePlay() {
+                if (!audio.src) {
+                    statusMessage.textContent = "Audio not loaded yet";
+                    return;
+                }
+                
+                if (isPlaying) {
+                    audio.pause();
+                    playIcon.classList.remove('fa-pause');
+                    playIcon.classList.add('fa-play');
+                    statusMessage.textContent = "Paused";
+                } else {
+                    audio.play().catch(e => {
+                        console.log("Audio play failed:", e);
+                        statusMessage.textContent = "Playback failed: " + e.message;
+                    });
+                    playIcon.classList.remove('fa-play');
+                    playIcon.classList.add('fa-pause');
+                    statusMessage.textContent = "Playing";
+                }
+                isPlaying = !isPlaying;
+            }
+            
+            // Set volume
+            function setVolume() {
+                audio.volume = volumeSlider.value;
+                
+                // Update volume icon
+                if (audio.volume == 0) {
+                    volumeIcon.classList.remove('fa-volume-up');
+                    volumeIcon.classList.add('fa-volume-mute');
+                } else {
+                    volumeIcon.classList.remove('fa-volume-mute');
+                    volumeIcon.classList.add('fa-volume-up');
+                }
+            }
+            
+            // Toggle mute
+            function toggleMute() {
+                audio.muted = !audio.muted;
+                
+                if (audio.muted) {
+                    volumeIcon.classList.remove('fa-volume-up');
+                    volumeIcon.classList.add('fa-volume-mute');
+                    volumeSlider.value = 0;
+                } else {
+                    volumeIcon.classList.remove('fa-volume-mute');
+                    volumeIcon.classList.add('fa-volume-up');
+                    volumeSlider.value = audio.volume;
+                }
+            }
+            
+            // Load audio from Google Drive using a proxy
+            function loadAudioFromDrive() {
+                // Using a CORS proxy to bypass Google Drive restrictions
+                const fileId = "1xxlfaQxHegP72q7-ZTygP3iMnWjSlrYE";
+                const proxyUrl = "https://corsproxy.io/?"; // Public CORS proxy
+                const driveUrl = `https://drive.google.com/uc?export=download&id=${fileId}`;
+                
+                statusMessage.textContent = "Loading your music...";
+                
+                // Set audio source with proxy
+                audio.src = proxyUrl + encodeURIComponent(driveUrl);
+                
+                // Preload audio metadata
+                audio.addEventListener('loadedmetadata', function() {
+                    durationEl.textContent = formatTime(audio.duration);
+                    statusMessage.textContent = "Ready to play";
+                });
+                
+                audio.addEventListener('canplay', function() {
+                    statusMessage.textContent = "Audio ready";
+                });
+                
+                audio.addEventListener('error', function(e) {
+                    console.error("Audio error:", e);
+                    statusMessage.textContent = "Error loading audio. Trying alternative method...";
+                    
+                    // Try alternative method if first one fails
+                    setTimeout(() => {
+                        const altUrl = `https://docs.google.com/uc?export=download&id=${fileId}`;
+                        audio.src = proxyUrl + encodeURIComponent(altUrl);
+                        audio.load();
+                    }, 2000);
+                });
+                
+                // Attempt to load the audio
+                audio.load();
+            }
+            
+            // Event Listeners
+            playBtn.addEventListener('click', togglePlay);
+            muteBtn.addEventListener('click', toggleMute);
+            volumeSlider.addEventListener('input', setVolume);
+            audio.addEventListener('timeupdate', updateProgress);
+            audio.addEventListener('ended', () => {
+                isPlaying = false;
+                playIcon.classList.remove('fa-pause');
+                playIcon.classList.add('fa-play');
+                progressBar.style.width = '0%';
+                currentTimeEl.textContent = '0:00';
+                statusMessage.textContent = "Playback finished";
+            });
+            progressContainer.addEventListener('click', setProgress);
+            
+            // Initialize volume
+            setVolume();
+            
+            // Create particles
+            createParticles();
+            
+            // Load audio from Google Drive when page loads
+            loadAudioFromDrive();
+        });
+    </script>
+</body>
+</html>
